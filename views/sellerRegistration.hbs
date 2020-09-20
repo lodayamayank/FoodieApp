@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+</head>
+
+<body class="bg-gradient-primary">
+
+  <div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+      <div class="card-body p-0">
+        <!-- Nested Row within Card Body -->
+        <div class="row">
+          <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+          <div class="col-lg-7">
+            <div class="p-5">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+              </div>
+              <form class="user" onsubmit="return false">
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user" id="firstName" placeholder="First Name">
+                    <div id="firstName_error" class="invalid-feedback">
+                      Please enter first name.
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-control form-control-user" id="lastName" placeholder="Last Name">
+                    <div id="lastName_error" class="invalid-feedback">
+                      Please enter last name.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="email" class="form-control form-control-user" id="email" placeholder="Email Address">
+                    <div id="email_error" class="invalid-feedback">
+                      Please enter valid email address.
+                    </div>
+                  </div>
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="text" class="form-control form-control-user numberOnly" id="mobileNumber"
+                      placeholder="Mobile Number" maxlength="10">
+                    <div id="mobileNumber_error" class="invalid-feedback">
+                      Please enter valid mobile number.
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control form-control-user" id="password" placeholder="Password">
+                    <div id="password_error" class="invalid-feedback">
+                      Please enter password.
+                    </div>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control form-control-user" id="repeatPassword"
+                      placeholder="Repeat Password">
+                    <div id="repeatPassword_error" class="invalid-feedback">
+                      Please enter repeat password.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox small">
+                    <input type="checkbox" class="custom-control-input" id="agreement" name="agreement">
+                    <label class="custom-control-label" for="agreement">I agree to <a href="#!">Terms and
+                        conditions</a> &amp; <a href="#!">Privacy policies</a></label>
+                    <div id="agreement_error" class="invalid-feedback">
+                      Please accept terms &amp; condition.
+                    </div>
+                  </div>
+                  <div id="signup_error" class="invalid-feedback">
+                    Server Error
+                  </div>
+                </div>
+                <button id="register" class="btn btn-primary btn-user btn-block">
+                  Register Account
+                </button>
+
+                {{!-- <a href="index.html" class="btn btn-google btn-user btn-block">
+                  <i class="fab fa-google fa-fw"></i> Register with Google
+                </a> --}}
+                {{!-- <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                  <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                </a> --}}
+              </form>
+              <hr>
+              {{!-- <div class="text-center">
+                <a class="small" href="forgot-password.html">Forgot Password?</a>
+              </div>
+              <hr> --}}
+              <div class="text-center">
+                <a class="small" href="{{loginLink}}">Already have an account? Login!</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bootstrap core JavaScript-->
+
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <script src="js/sellerRegistration.js"></script>
+
+</body>
+
+</html>

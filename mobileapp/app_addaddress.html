@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html class="loading" lang="en" data-textdirection="ltr">
+<!-- BEGIN: Head-->
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description"
+        content="Materialize is a Material Design Admin Template,It's modern, responsive and based on Material Design by Google.">
+    <meta name="keywords"
+        content="materialize, admin template, dashboard template, flat admin template, responsive admin template, eCommerce dashboard, analytic dashboard">
+    <meta name="author" content="ThemeSelect">
+    <title>Enquiry</title>
+    <link rel="apple-touch-icon" href="./images/favicon/apple-touch-icon-152x152.png">
+    <link rel="shortcut icon" type="image/x-icon" href="./images/favicon/favicon-32x32.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+    <!-- BEGIN: VENDOR CSS-->
+    <link rel="stylesheet" type="text/css" href="./vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css" href="./vendors/animate-css/animate.css">
+    <link rel="stylesheet" type="text/css" href="./vendors/chartist-js/chartist.min.css">
+    <link rel="stylesheet" type="text/css" href="./vendors/chartist-js/chartist-plugin-tooltip.css">
+    <!-- END: VENDOR CSS-->
+    <!-- BEGIN: Page Level CSS-->
+    <link rel="stylesheet" type="text/css" href="./css/themes/vertical-dark-menu-template/materialize.css">
+    <link rel="stylesheet" type="text/css" href="./css/themes/vertical-dark-menu-template/style.css">
+    <link rel="stylesheet" type="text/css" href="./css/pages/dashboard-modern.css">
+    <link rel="stylesheet" type="text/css" href="./css/pages/intro.css">
+    <!-- END: Page Level CSS-->
+    <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" type="text/css" href="./css/custom/custom.css">
+    <!-- END: Custom CSS-->
+    <style>
+        body {
+            margin-bottom: 200px;
+        }
+    </style>
+</head>
+<!-- END: Head-->
+
+<body class="vertical-layout page-header-light vertical-menu-collapsible vertical-dark-menu 2-columns  "
+    data-open="click" data-menu="vertical-dark-menu" data-col="2-columns">
+    <div id="displayLoading" class="hide">
+        <div class="preloader-wrapper small active custom-loader">
+            <div class="spinner-layer spinner-yellow-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+     </div>
+    <!-- BEGIN: Header-->
+    <header class="page-topbar" id="header">
+        <div class="navbar navbar-fixed">
+            <nav class="navbar-main navbar-color navbar-light nav-collapsible sideNav-lock">
+                <div class="nav-wrapper">
+                    <div class="row">
+                        <div class="col s2"><a
+                                class=" btn-sidenav-toggle waves-effect waves-light hide-on-large-only back-arrow"
+                                href="#"><i class="material-icons">arrow_back</i></a></div>
+                        <div class="col s8">
+                            <h6 class="nav-header">Add Address</h6>
+                        </div>
+                        <div class="col s2"><a id="save" class="waves-effect waves-block waves-light "
+                                href="javascript:void(0);"><i class="material-icons">check</i></a></div>
+                    </div>
+                    <!-- <ul class="navbar-list right"> -->
+                    <!-- <li class="hide-on-large-only"><a class="waves-effect waves-block waves-light search-button"
+                          href="javascript:void(0);"><i class="material-icons">search</i></a></li> -->
+                    <!-- <li><a class="waves-effect waves-block waves-light " href="javascript:void(0);"
+                          ><i class="material-icons">notifications_none<small
+                                class="notification-badge">5</small></i></a></li> -->
+                    <!-- <li><a class="waves-effect waves-block waves-light " href="javascript:void(0);"
+                                   ><i class="material-icons">favorite_border</i></a></li> -->
+
+                    <!-- </ul> -->
+
+                </div>
+
+            </nav>
+        </div>
+    </header>
+    <!-- END: Header-->
+
+    <!-- BEGIN: Page Main-->
+    <div id="main">
+        <div class="row">
+            <div class="col s12 m6 l6">
+                <div id="prefixes" class="card card card-default scrollspy">
+                    <div class="card-content">
+                        <span class="subtitle font-weight-700" style="font-size: 18px;">ADDRESS DETAILS</span>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="name" type="text" value="Tushar Gujrathi">
+                                <label for="name">Name</label>
+                                <span id="name_error" class="helper-text red-text" style="display: none">Name is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="mobileNumber" type="tel" maxlength="10" value="8983056340">
+                                <label for="mobileNumber">Mobile Number</label>
+                                <span id="mobileNumber_error" class="helper-text red-text" style="display: none">Mobile Number is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="address1" type="text" value="Flat No. 2">
+                                <label for="address1">Flat No. / Appartment</label>
+                                <span id="address1_error" class="helper-text red-text" style="display: none">Flat No. / Appartment is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="address2" type="text" value="Baner Road">
+                                <label for="address2">Street / Road</label>
+                                <span id="address2_error" class="helper-text red-text" style="display: none">Street / Road is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="landmark" type="text" value="Near Bakers Prime Bakery">
+                                <label for="landmark">Landmark</label>
+                                <span id="landmark_error" class="helper-text red-text" style="display: none">Landmark is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="city" type="text" value="Pune">
+                                <label for="city">City</label>
+                                <span id="city_error" class="helper-text red-text" style="display: none">City is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="district" type="text" value="Pune">
+                                <label for="district">District</label>
+                                <span id="district_error" class="helper-text red-text" style="display: none">District is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="state" type="text" value="Maharashtra">
+                                <label for="state">State</label>
+                                <span id="state_error" class="helper-text red-text" style="display: none">State is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="pincode" type="tel" pattern="\d*" maxlength="6" value="411045">  
+                                <label for="pincode">Pincode</label>
+                                <span id="pincode_error" class="helper-text red-text" style="display: none">Pincode is
+                                    required
+                                </span>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BEGIN: Footer-->
+    </div>
+
+   <input type="hidden" id="ajaxurl">
+    <!-- END: Footer-->
+    <!-- BEGIN VENDOR JS-->
+    <script src="./js/vendors.min.js" type="text/javascript"></script>
+    <!-- BEGIN VENDOR JS-->
+    <!-- BEGIN PAGE VENDOR JS-->
+    <script src="./vendors/chartjs/chart.min.js" type="text/javascript"></script>
+    <script src="./vendors/chartist-js/chartist.min.js" type="text/javascript"></script>
+    <script src="./vendors/chartist-js/chartist-plugin-tooltip.js" type="text/javascript"></script>
+    <script src="./vendors/chartist-js/chartist-plugin-fill-donut.min.js" type="text/javascript"></script>
+    <!-- END PAGE VENDOR JS-->
+    <!-- BEGIN THEME  JS-->
+    <script src="./js/plugins.js" type="text/javascript"></script>
+    <script src="./js/custom/custom-script.js" type="text/javascript"></script>
+    <script src="./javascripts/common.js" type="text/javascript"></script>
+    <script src="./app_addaddress.js" type="text/javascript"></script>
+
+    <!-- END THEME  JS-->
+    <!-- BEGIN PAGE LEVEL JS-->
+
+    <!-- END PAGE LEVEL JS-->
+</body>
+
+</html>

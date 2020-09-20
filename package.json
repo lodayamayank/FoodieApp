@@ -1,0 +1,36 @@
+{
+  "name": "blue-butterfly-admin",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "8.11.4"
+  },
+  "scripts": {
+    "start": "nodemon app.js"
+  },
+  "dependencies": {
+    "async": "^3.1.0",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "config": "^3.2.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "cross-env": "^5.2.0",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "express-session": "^1.16.2",
+    "hbs": "~4.0.4",
+    "helmet": "^3.20.0",
+    "http-errors": "~1.6.3",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.24.0",
+    "mongodb-uri": "^0.9.7",
+    "mongoose": "^5.6.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.19.1",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "uuid": "^3.3.2",
+    "xssfilter": "^0.5.3"
+  }
+}
