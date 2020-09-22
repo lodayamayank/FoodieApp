@@ -38,21 +38,28 @@ function ProductsSchema(connection, gConfig) {
             required: true,
             default: 1
         },
-        categoryId: {
-            type: String,
-            required: true,
-            ref: "Categories"
-        },
-        subCategoryId: {
-            type: String,
-            required: true,
-            ref: "Subcategories"
-        },
-        product: {
+        productName: {
             type: String,
             required: true
         },
-
+        productDesc: {
+            type: String,
+            required: true
+        },
+        productImage: {
+            type: Schema.Types.Mixed,
+            required: false
+        },
+        
+        actualPrice: {
+            type: Number,
+            required: true
+        },
+        availableQuantity: {
+            type: Number,
+            required: true
+        },
+        
     });
     gConfig.ProductsSchema = connection.model("Products", ProductsSchema)
     return gConfig;

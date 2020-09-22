@@ -38,19 +38,55 @@ function OrdersSchema(connection, gConfig) {
             required: true,
             default: 1
         },
-        categoryId: {
-            type: String,
-            required: true,
-            ref: "Categories"
-        },
-        subCategoryId: {
-            type: String,
-            required: true,
-            ref: "Subcategories"
-        },
-        order: {
+        orderNumber: {
             type: String,
             required: true
+        },
+        totalAmount: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        itemsCount: {
+            type: Number,
+            required: true,
+            default: 0
+        },
+        name: {
+            type: String,
+            required: false,
+        },
+        mobileNumber: {
+            type: String,
+            required: false,
+        },
+        address1: {
+            type: String,
+            required: false,
+        },
+        address2: {
+            type: String,
+            required: false,
+        },
+        landmark: {
+            type: String,
+            required: false,
+        },
+        city: {
+            type: String,
+            required: false,
+        },
+        district: {
+            type: String,
+            required: false,
+        },
+        state: {
+            type: String,
+            required: false,
+        },
+        pincode: {
+            type: Number,
+            required: false,
         },
 
     });
