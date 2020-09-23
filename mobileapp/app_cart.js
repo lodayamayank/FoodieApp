@@ -55,10 +55,10 @@ function getProductsListByCategory() {
                                 <span class="bold text-ellipsis">${data.productName}</span>
                               </div>
                               <div class="col s12">
-                                <small>${data.categoryName}</small>
+                                <small></small>
                               </div>
                               <div class="col s8">
-                                <h6><b>₹${data.sellingPrice}</b> <small><strike>₹${data.actualPrice}</strike></small><h6>
+                                <h6><b>₹${data.actualPrice}</b> <small><strike>₹${data.actualPrice}</strike></small><h6>
                               </div>
                               <div class="col s4">
                                 <div class="row">

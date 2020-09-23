@@ -27,9 +27,7 @@ function getProductDetails() {
             indicators: true,
           });
         }
-        $("#categoryName").html(response.data.categoryName);
         $("#productName").html(response.data.productName);
-        $("#sellingPrice").html(response.data.sellingPrice);
         $("#actualPrice").html(response.data.actualPrice);
         let availability = "Available";
         $("#availability").html(availability);
@@ -72,7 +70,7 @@ function addProductToCart(button) {
           html: "Unable to add product product in cart",
         });
       }
-      getCartCount();
+      
       $("#displayLoading").addClass("hide");
       $(button).prop("disable", false);
     },

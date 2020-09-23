@@ -75,8 +75,15 @@ module.exports = function (gConfig) {
       })
     })
   }
+  function extend(object,source) {
+    Object.keys(source).forEach(function(key) {
+      object[key] = source[key];
+    });
+    return object;
+  }
 
   gConfig.getUserMenu = getUserMenu;
   gConfig.verifyToken = verifyToken;
+  gConfig.extend = extend;
   return gConfig;
 };

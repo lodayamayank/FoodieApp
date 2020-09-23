@@ -5,7 +5,7 @@ module.exports = function (app, gConfig) {
       if (responseToken != false) {
         gConfig.getUserMenu(responseToken, token, function (menu) {
           var resObj = {};
-          resObj.appName = "FoodieApp";
+          resObj.appName = "EShopper";
           resObj.title = "Products";
           resObj.menu = menu;
           resObj.token = token;
@@ -59,7 +59,7 @@ module.exports = function (app, gConfig) {
                     json._id = product._id;
                     json.name = product.productName;
                     json.actualPrice = product.actualPrice;
-                   
+                    json.availableQuantity = product.availableQuantity;
                     json.productImage = product.productImage;
                     json.createdOn = gConfig
                       .moment(product.createdOn)
@@ -100,7 +100,7 @@ module.exports = function (app, gConfig) {
     }
   };
 
- 
+  
 
   getProductRecordById = function (req, res) {
     var responseJSON = {};
@@ -127,11 +127,17 @@ module.exports = function (app, gConfig) {
                 json.name = resSchema.productName;
                 json.productName = resSchema.productName;
                 json.productDesc = resSchema.productDesc;
-               
+                json.sectionId = resSchema.sectionId;
+                json.categoryId = resSchema.categoryId;
+                json.subCategoryId = resSchema.subCategoryId;
                 json.actualPrice = resSchema.actualPrice;
-                ;
+                json.sellingPrice = resSchema.sellingPrice;
                 json.availableQuantity = resSchema.availableQuantity;
-                
+                json.discount = resSchema.discount;
+                json.colorId = resSchema.colorId;
+                json.manufacturerId = resSchema.manufacturerId;
+                json.brandId = resSchema.brandId;
+                json.warranty = resSchema.warranty;
 
                 responseJSON.status = 0;
                 responseJSON.data = json;
@@ -178,14 +184,14 @@ module.exports = function (app, gConfig) {
           if (req.body.actualPrice != "" && req.body.actualPrice != undefined) {
             resSaveCommon.actualPrice = req.body.actualPrice;
           }
-          
+         
           if (
             req.body.availableQuantity != "" &&
             req.body.availableQuantity != undefined
           ) {
             resSaveCommon.availableQuantity = req.body.availableQuantity;
           }
-          
+         
           if (req.body.productDesc != "" && req.body.productDesc != undefined) {
             resSaveCommon.productDesc = req.body.productDesc;
           }
@@ -237,20 +243,22 @@ module.exports = function (app, gConfig) {
               if (req.body.name != "" && req.body.name != undefined) {
                 resUpdateSchema.productName = req.body.name;
               }
-             
+              
+              
               if (
                 req.body.actualPrice != "" &&
                 req.body.actualPrice != undefined
               ) {
                 resUpdateSchema.actualPrice = req.body.actualPrice;
               }
-             
+              
               if (
                 req.body.availableQuantity != "" &&
                 req.body.availableQuantity != undefined
               ) {
                 resUpdateSchema.availableQuantity = req.body.availableQuantity;
               }
+              
               // if (req.body.productDesc != '' && req.body.productDesc != undefined) {
               //   resUpdateSchema.productDesc = req.body.productDesc;
               // }
@@ -355,5 +363,5 @@ module.exports = function (app, gConfig) {
   app.post("/saveAjaxProducts", saveProduct);
   app.post("/updateAjaxProducts", updateProduct);
   app.post("/deleteAjaxProducts", deleteProduct);
- 
+  
 };
