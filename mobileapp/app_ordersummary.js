@@ -177,10 +177,8 @@ function getOrderItemsOfOrder() {
         html += `<div class="list-title-area">`;
         html += `<div class="list-title" style="border-bottom:1px solid #ddd;"><h6 class="bold">Order Items</h6></div></div>`;
         let actualPrice = 0;
-        let sellingPrice = 0;
           response.data.forEach(function (data) {
           actualPrice += data.actualPrice * data.quantity;
-          sellingPrice += data.sellingPrice * data.quantity;
             let image;
             if (data.productImage !== undefined) {
               image = data.productImage[0].url;
@@ -200,11 +198,9 @@ function getOrderItemsOfOrder() {
                                 <div class="col s12">
                                   <span class="bold text-ellipsis">${data.productName}</span>
                                 </div>
-                                <div class="col s12">
-                                  <small>${data.categoryName}</small>
-                                </div>
+                                
                                 <div class="col s6">
-                                  <h6><b>₹${data.sellingPrice}</b> <small><strike>₹${data.actualPrice}</strike></small><h6>
+                                  <h6><b>₹${data.actualPrice}</b> <small></small><h6>
                                 </div>
                                 <div class="col s6">
                                   <h6 class="right"><b>Qty: ${data.quantity}</b><h6>
@@ -252,10 +248,8 @@ function getOrderItemsOfOrder() {
         html += `<div class="list-title" style="border-bottom:1px solid #ddd;"><h6 class="bold">Price Details</h6></div></div>`;
         // html += `<hr>`;
         html += `<div class="row" style="margin:0px !important"><div class="col s6" style="padding:0px">Price:</div><div class="col s6" style="padding:0px"><span class="right">₹${actualPrice}</span></div></div>`;
-        html += `<div class="row" style="margin:0px !important"><div class="col s6" style="padding:0px">Discount:</div><div class="col s6" style="padding:0px"><span class="right">₹${
-          actualPrice - sellingPrice
-        }</span></div></div>`;
-        html += `<div class="row" style="margin:0px !important"><div class="col s6" style="padding:0px"><h6 class="bold">Amount Payable:</h6></div><div class="col s6" style="padding:0px"><h6 class="bold right">₹${sellingPrice}</h6></div></div>`;
+        
+        html += `<div class="row" style="margin:0px !important"><div class="col s6" style="padding:0px"><h6 class="bold">Amount Payable:</h6></div><div class="col s6" style="padding:0px"><h6 class="bold right">₹${actualPrice}</h6></div></div>`;
         html += `</ul>`;
         $('#priceDetails').html(html);
 
@@ -364,7 +358,7 @@ function updateOrderConfirmation(button) {
       if (response.status == 0) {
         const token = getParameterByName('token');
         const recordId = response.data._id;
-        window.location.href = `app_ordersummary.html?token=${token}`;
+        window.location.href = `app_orderthankyou.html?token=${token}`;
       }
       $('#displayLoading').addClass('hide');
       $(button).prop('disable', false);

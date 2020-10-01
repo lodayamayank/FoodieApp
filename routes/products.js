@@ -61,6 +61,7 @@ module.exports = function (app, gConfig) {
                     json.actualPrice = product.actualPrice;
                     json.availableQuantity = product.availableQuantity;
                     json.productImage = product.productImage;
+                    json.productDesc = product.productDesc;
                     json.createdOn = gConfig
                       .moment(product.createdOn)
                       .format("DD/MM/YYYY");

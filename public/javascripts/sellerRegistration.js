@@ -50,27 +50,14 @@ $(document).ready(function () {
         }
         $("#password_error").hide();
 
-        objParams.repeatPassword = $("#repeatPassword").val();
-        if (!objParams.repeatPassword) {
-            $("#repeatPassword_error").show().fadeIn("slow");
-            $("#repeatPassword").focus();
-            return false;
-        }
-        $("#repeatPassword_error").hide();
-
-        if (objParams.password !== objParams.repeatPassword){
-            $("#signup_error").show();
-            $("#signup_error").html("Password does not match.");
-            return false
-        }
         $("#signup_error").hide();
 
-        if (!$('#agreement').is(':checked')){
-            $("#agreement_error").show().fadeIn("slow");;
-            $("#agreement").focus();
-            return false;
-        }
-        $("#agreement_error").hide().fadeOut("slow");;
+        // if (!$('#agreement').is(':checked')){
+        //     $("#agreement_error").show().fadeIn("slow");;
+        //     $("#agreement").focus();
+        //     return false;
+        // }
+        // $("#agreement_error").hide().fadeOut("slow");;
     
         signUpSeller(objParams);
 

@@ -186,11 +186,7 @@ if (req.body.token){
           condition.userId = responseToken.userId;
           const resSchema = await gConfig.CartSchema.find(condition)
             .populate({
-              path: 'productId',
-              populate: {
-                path: 'categoryId',
-                model: 'Categories',
-          },
+              path: 'productId'
             })
             .exec();
 
@@ -214,10 +210,7 @@ if (req.body.token){
               json.productName = cart.productId.productName;
               json.productImage = cart.productId.productImage || [];
               json.actualPrice = cart.productId.actualPrice;
-              json.sellingPrice = cart.productId.sellingPrice;
-              cartTotal += cart.productId.sellingPrice * cart.quantity;
-              json.categoryName = cart.productId.categoryId.name;
-              json.categoryId = cart.productId.categoryId._id;
+              cartTotal += cart.productId.actualPrice * cart.quantity;
               json.productName = cart.productId.productName;
               arrRecords.push(json);
             }
@@ -530,7 +523,7 @@ if (req.body.token){
                 errOrderItems = error;
               }
 
-              await gConfig.async(resOrderItems, async (orderItems) => {
+              await gConfig.async.eachSeries(resOrderItems, async (orderItems) => {
                 const conditionProduct = {};
                 conditionProduct._id = orderItems.productId;
                 const resProduct = await gConfig.ProductsSchema.findOne(

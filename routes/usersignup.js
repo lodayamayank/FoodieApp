@@ -2,14 +2,13 @@ var bcrypt = require("bcrypt");
 var jwt = require("jsonwebtoken");
 var config = require("../config/config");
 var UserSchema = require('../models/Usermanagement');
-var HistorySchema = require('../models/History');
 
 
 module.exports = function (app, gConfig) {
     getRegistrationPage = function (req, res) {
         var resObj = {};
         resObj.loginLink = "/";
-        resObj.title = "Seller Registration";
+        resObj.title = "Registration";
         res.render('sellerRegistration', resObj);
     }
 
@@ -17,18 +16,13 @@ module.exports = function (app, gConfig) {
         var responseJson = {};
         var resSaveCommon = new gConfig.UsermanagementSchema({});
         resSaveCommon.createdOn = new Date();
-        resSaveCommon.roleName = 'Seller';
+        resSaveCommon.roleName = 'User';
         resSaveCommon.isAdmin = 1;
 
         if (req.body.firstName != '' && req.body.firstName != undefined) {
             resSaveCommon.firstName = req.body.firstName;
         }
-
-        if (req.body.lastName != '' && req.body.lastName != undefined) {
-            resSaveCommon.lastName = req.body.lastName;
-        }
-
-        if (req.body.email != '' && req.body.email != undefined) {
+         if (req.body.email != '' && req.body.email != undefined) {
             resSaveCommon.email = req.body.email;
         }
 
@@ -36,10 +30,12 @@ module.exports = function (app, gConfig) {
             resSaveCommon.mobileNumber = req.body.mobileNumber;
         }
 
-        if (req.body.mobileNumber != '' && req.body.mobileNumber != undefined) {
-            resSaveCommon.mobileNumber = req.body.mobileNumber;
+        if (req.body.flatNumber != '' && req.body.flatNumber != undefined) {
+            resSaveCommon.flatNumber = req.body.flatNumber;
         }
-
+        if (req.body.wing != '' && req.body.wing != undefined) {
+            resSaveCommon.wing = req.body.wing;
+        }
         if (req.body.password != '' && req.body.password != undefined) {
             bcrypt.genSalt(config.commonObjects.encryptionRound, function (err, salt) {
 

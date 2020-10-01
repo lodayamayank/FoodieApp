@@ -42,6 +42,14 @@ body {
   /* left: 50%; */
   /* width: 30em; */
 }
+.registerBody {
+  background-color: #fff;
+}
+#register-page{
+  position: fixed;
+  top:5%;
+}
+
 .buy-buttons {
   position: fixed;
   bottom: 0;
@@ -236,6 +244,10 @@ footer {
 	list-style-type: disc !important;
 }
 #login-page{
+  margin:0px;
+  width: 100%;
+}
+#register-page{
   margin:0px;
   width: 100%;
 }
@@ -493,10 +505,14 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 
 .productImage {
-  /* width: 135px !important; */
+  width: 135px !important; 
   height: 135px !important;
   float: left;
   position: relative;
+  
+}
+.productDesc{
+  margin-left: 10px ;
 }
 .homeProductDetails img {
     object-fit: cover;

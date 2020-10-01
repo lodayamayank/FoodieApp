@@ -66,11 +66,6 @@ function UsermanagementSchema(connection, gConfig) {
             required: true,
             trim: true
         },
-        lastName: {
-            type: String,
-            required: true,
-            trim: true
-        },
         email: {
             type: String,
             required: true,
@@ -92,7 +87,11 @@ function UsermanagementSchema(connection, gConfig) {
             type: String,
             required: false
         },
-        address: {
+        flatNumber: {
+            type: Schema.Types.Mixed,
+            required: false
+        },
+        wing: {
             type: Schema.Types.Mixed,
             required: false
         }

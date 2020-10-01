@@ -270,11 +270,7 @@ $(document).on("click", ".editRecord", function () {
       $(".preview").append(html);
       var objParams = {};
       objParams.section = $("#section :selected").val();
-      getCategoriesList(
-        objParams,
-        response.data.categoryId,
-        response.data.subCategoryId
-      );
+      
 
       $("#productModal").modal("open");
       M.updateTextFields();

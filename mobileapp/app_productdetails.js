@@ -70,7 +70,7 @@ function addProductToCart(button) {
           html: "Unable to add product product in cart",
         });
       }
-      
+      getCartCount();
       $("#displayLoading").addClass("hide");
       $(button).prop("disable", false);
     },

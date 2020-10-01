@@ -41,7 +41,8 @@ function getProductList() {
                       <span class="card-title text-ellipsis">${data.name}</span>
                       <img src="${imageUrl}" class="responsive-img productImage" alt="">
                       <div class="row">
-                      <h6 class="col s12 m12 l8 mt-3"><small><strike>₹${data.actualPrice}</strike></small> ₹${data.actualPrice}</h6>
+                      <div class="productDesc">${data.productDesc}</div>
+                      <h6 class="col s12 m12 l8 mt-3">₹${data.actualPrice}</h6>
                       </div>
                     </div>
                   </div>

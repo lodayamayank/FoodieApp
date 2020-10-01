@@ -58,7 +58,7 @@ function getProductsListByCategory() {
                                 <small></small>
                               </div>
                               <div class="col s8">
-                                <h6><b>₹${data.actualPrice}</b> <small><strike>₹${data.actualPrice}</strike></small><h6>
+                                <h6><b>₹${data.actualPrice}</b><h6>
                               </div>
                               <div class="col s4">
                                 <div class="row">
@@ -119,7 +119,7 @@ function saveOrder(button) {
       if (response.status == 0) {
         const token = getParameterByName('token');
         const recordId = response.data._id;
-        window.location.href = `app_orderaddress.html?token=${token}&recordId=${recordId}`;
+        window.location.href = `app_ordersummary.html?token=${token}&recordId=${recordId}`;
       }
       $('#displayLoading').addClass('hide');
       $(button).prop('disable', false);
