@@ -63,6 +63,11 @@ if (req.body.token){
                 json.index = index;
                 json._id = order._id;
                 json.name = order.name;
+                json.itemsCount=order.itemsCount;
+                json.totalAmount=order.totalAmount;
+                json.createdBy = order.createdBy;
+                json.orderNumber = order.orderNumber;
+                json.mobileNumber = order.mobileNumber;
                 json.order = order.order;
                     json.createdOn = gConfig
                       .moment(order.createdOn)
@@ -102,6 +107,7 @@ if (req.body.token){
     }
   };
 
+ 
   getOrderRecordById = function (req, res) {
     var responseJSON = {};
     try {
@@ -124,16 +130,22 @@ if (req.body.token){
               return res.json(responseJSON);
             } else if (resSchema) {
                 var json = {};
-              json.name = resSchema.name;
+
+                json._id = resSchema._id;
                 json.name = resSchema.name;
+                json.createdBy = resSchema.createdBy;
                 json.mobileNumber = resSchema.mobileNumber;
-                json.address1 = resSchema.address1;
-                json.address2 = resSchema.address2;
-                json.landmark = resSchema.landmark;
-                json.city = resSchema.city;
-                json.district = resSchema.district;
-                json.state = resSchema.state;
-                json.pincode = resSchema.pincode;
+                json.totalAmount = resSchema.totalAmount;
+                json.itemsCount = resSchema.itemsCount;
+                json.orderNumber = resSchema.orderNumber;
+                json.status = resSchema.status;
+                
+                json.createdOn = gConfig
+                  .moment(resSchema.createdOn)
+                  .format('DD/MM/YYYY');
+                json.updatedOn = gConfig
+                  .moment(resSchema.updatedOn)
+                  .format('DD/MM/YYYY');
               responseJSON.status = 0;
               responseJSON.data = json;
               return res.json(responseJSON);
@@ -200,6 +212,7 @@ if (req.body.token){
             if (cart.productId.isDelete === 0) {
               index++;
               var json = {};
+              
               json.quantity = cart.quantity;
               json.createdOn = new Date();
               json.orderNumber = orderNumber;
@@ -571,6 +584,98 @@ if (req.body.token){
     }
   };
 
+  getOrdersListByUser = function (req, res) {
+    var responseJSON = {};
+    try {
+      let token;
+      if (req.body.token) {
+        token = req.body.token;
+      } else {
+        token = req.cookies.token;
+      }
+      gConfig.verifyToken(token, function (responseToken) {
+        if (responseToken != false) {
+          var condition = {};
+          condition.isDelete = 0;
+          var take = 0;
+          var skip = 0;
+          if (req.body.take != '' && req.body.take != undefined) {
+            take = req.body.take;
+          }
+          if (req.body.skip != '' && req.body.skip != undefined) {
+            skip = req.body.skip;
+          }
+          condition.userId = responseToken.userId;
+          condition.status = {$nin: ["Pending"]}
+          gConfig.OrdersSchema.find(condition)
+            .sort({ createdOn: -1 })
+            .exec(function (errSchema, resSchema) {
+              if (errSchema) {
+                responseJSON.status = 1;
+                responseJSON.err = '';
+                responseJSON.data = [];
+                return res.json(responseJSON);
+              } else {
+                var arrRecords = [];
+                var index = 0;
+                var totalRecords = 0;
+                gConfig.async.eachSeries(
+                  resSchema,
+                  function (order, orderCallback) {
+                    index++;
+                    var json = {};
+                    json.index = index;
+                    json._id = order._id;
+                    json.name = order.name;
+                    json.createdBy = order.createdBy;
+                    json.mobileNumber = order.mobileNumber;
+                    json.totalAmount = order.totalAmount;
+                    json.itemsCount = order.itemsCount;
+                    json.orderNumber = order.orderNumber;
+                    json.status = order.status;
+                    json.deliveryAddresss = `${order.address1 || ''}, ${
+                      order.address2 || ''
+                    }, ${order.landmark || ''}, ${order.city || ''}, ${
+                      order.district || ''
+                    }, ${order.state || ''} - ${order.pincode || ''}`;
+                    json.createdOn = gConfig
+                      .moment(order.createdOn)
+                      .format('DD/MM/YYYY');
+                    json.updatedOn = gConfig
+                      .moment(order.updatedOn)
+                      .format('DD/MM/YYYY');
+                    arrRecords.push(json);
+                    orderCallback();
+                  },
+                  function () {
+                    gConfig.OrdersSchema.countDocuments(condition).exec(
+                      function (err, count) {
+                        totalRecords = count;
+                        responseJSON.status = 0;
+                        responseJSON.data = arrRecords;
+                        responseJSON.totalRecords = totalRecords;
+                        return res.json(responseJSON);
+                      }
+                    );
+                  }
+                );
+              }
+            });
+        } else {
+          responseJSON.status = 1;
+          responseJSON.err = '';
+          responseJSON.data = [];
+          return res.json(responseJSON);
+        }
+      });
+    } catch (err) {
+      responseJSON.status = 1;
+      responseJSON.data = [];
+      responseJSON.err = 'Error while loading';
+      return res.json(responseJSON);
+    }
+  };
+
   app.get('/orders/:tokenKey', getOrder);
   app.post('/getOrders', getOrdersList);
   app.post('/getOrderRecordById', getOrderRecordById);
@@ -579,4 +684,5 @@ if (req.body.token){
   app.post('/updateAjaxOrderAdress', updateOrderAddress);
   app.post('/updateAjaxOrderConfirmation', updateOrderConfirmation);
   app.post('/deleteAjaxOrders', deleteOrder);
+  app.post('/getOrdersListByUserAjax', getOrdersListByUser);
 };

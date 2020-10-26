@@ -24,6 +24,7 @@ module.exports = function (app, gConfig) {
     if (req.body.email != '' && req.body.email != undefined) {
       condition.email = req.body.email;
     }
+   
     gConfig.UsermanagementSchema.findOne(condition).exec(function (errSchema, resSchema) {
       if (errSchema) {
         responseJson.data = '';
@@ -42,6 +43,7 @@ module.exports = function (app, gConfig) {
             tokenData.isAdmin = resSchema.isAdmin;
             tokenData.roleName = resSchema.roleName;
             tokenData.userId = resSchema.userId;
+            tokenData.userName = `${resSchema.firstName}`;
             tokenData.isUserVerified = resSchema.isUserVerified;
             tokenData.isEmailVerified = resSchema.isEmailVerified;
             tokenData.isMobileVerified = resSchema.isMobileVerified;

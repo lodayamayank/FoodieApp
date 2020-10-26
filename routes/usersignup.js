@@ -56,7 +56,8 @@ module.exports = function (app, gConfig) {
         var condition = {};
         condition.$or = [
             { mobileNumber: req.body.mobileNumber },
-            { email: req.body.email },
+            { email: req.body.email 
+          },
         ];
         condition.isDelete = 0;
         debugger;
@@ -131,4 +132,4 @@ module.exports = function (app, gConfig) {
 
     app.get('/seller-registration', getRegistrationPage);
     app.post('/api/seller-signup', sellerSignUp);
-};
+}

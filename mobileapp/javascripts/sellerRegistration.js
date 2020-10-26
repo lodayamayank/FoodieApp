@@ -2,21 +2,13 @@ $(document).ready(function () {
     $(document).on("click", "#register", function (e) {
         var objParams = {};
 
-        objParams.firstName = $("#firstName").val();
+        objParams.firstName = $("#name").val();
         if (!objParams.firstName) {
-            $("#firstName_error").show().fadeIn("slow");;
-            $("#firstName").focus();
+            $("#name_error").show().fadeIn("slow");;
+            $("#name").focus();
             return false;
         }
-        $("#firstName_error").hide();
-
-        objParams.lastName = $("#lastName").val();
-        if (!objParams.lastName) {
-            $("#lastName_error").show().fadeIn("slow");;
-            $("#lastName").focus();
-            return false;
-        }
-        $("#lastName_error").hide();
+        $("#name_error").hide();
 
         objParams.email = $("#email").val();
         if (!objParams.email) {
@@ -29,19 +21,7 @@ $(document).ready(function () {
             return false;
         } 
         $("#email_error").hide();
-
-        objParams.mobileNumber = $("#mobileNumber").val();
-        if (!objParams.mobileNumber) {
-            $("#mobileNumber_error").show().fadeIn("slow");;
-            $("#mobileNumber").focus();
-            return false;
-        } if (!isValidMobile(objParams.mobileNumber)) {
-            $("#email_error").show().fadeIn("slow");
-            $("#email").focus();
-            return false;
-        } 
-        $("#mobileNumber_error").hide();
-
+    
         objParams.password = $("#password").val();
         if (!objParams.password) {
             $("#password_error").show().fadeIn("slow");
@@ -50,37 +30,52 @@ $(document).ready(function () {
         }
         $("#password_error").hide();
 
-        objParams.repeatPassword = $("#repeatPassword").val();
-        if (!objParams.repeatPassword) {
-            $("#repeatPassword_error").show().fadeIn("slow");
-            $("#repeatPassword").focus();
+        objParams.mobileNumber = $("#mobile_no").val();
+        if (!objParams.mobileNumber) {
+            $("#mobile_no_error").show().fadeIn("slow");;
+            $("#mobile_no").focus();
+            return false;
+        
+        } 
+        $("#mobile_no_error").hide();
+
+        objParams.flatNumber = $("#flat_no").val();
+        if (!objParams.flatNumber) {
+            $("#flat_no_error").show().fadeIn("slow");
+            $("#flat_no").focus();
             return false;
         }
-        $("#repeatPassword_error").hide();
+        $("#flat_no_error").hide();
 
-        if (objParams.password !== objParams.repeatPassword){
-            $("#signup_error").show();
-            $("#signup_error").html("Password does not match.");
-            return false
+        objParams.wing = $("#wing_name :selected").val();
+        if (!objParams.wing) {
+            $("#wing_name_error").show();
+            $("#wing_name").focus();
+            return false;
         }
+        $("#wing_name_error").hide();
+
         $("#signup_error").hide();
 
-        if (!$('#agreement').is(':checked')){
-            $("#agreement_error").show().fadeIn("slow");;
-            $("#agreement").focus();
-            return false;
-        }
-        $("#agreement_error").hide().fadeOut("slow");;
-    
+        // if (!$('#agreement').is(':checked')){
+        //     $("#agreement_error").show().fadeIn("slow");;
+        //     $("#agreement").focus();
+        //     return false;
+        // }
+        // $("#agreement_error").hide().fadeOut("slow");;
+        
         signUpSeller(objParams);
 
     })
 });
 
 function signUpSeller(objParams) {
+    $("#displayLoading").removeClass("hide");
+    $("#register").attr("disabled",true);
+    const ajaxurl =  $("#ajaxurl").val();
     $.ajax({
         data: objParams,
-        url: "/api/seller-signup",
+        url: ajaxurl+"/api/seller-signup",
         type: "post",
         success: function (response) {
             if (response.status == 200){

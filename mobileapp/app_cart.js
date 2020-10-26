@@ -79,7 +79,7 @@ function getProductsListByCategory() {
                       </div>
                       <div class="card-action">
                         <a href="#" class="btn-flat waves-effect waves-light" style="padding:0px 4px;margin:0px"><i class="material-icons-outlined left" style="">favorite_border</i>Move to Wishlist</a> 
-                        <a href="#" class="btn-flat waves-effect waves-light red-text right" style="padding: 0px 4px;margin:0px"><i class="material-icons-outlined left" style="">delete</i>Remove</a>
+                        <a href="#" id="deleteFromCart" class="btn-flat waves-effect waves-light red-text right" recordId="${data._id}" style="padding: 0px 4px;margin:0px"><i class="material-icons-outlined left" style="">delete</i>Remove</a>
                       </div>
                     </div>
                   </div>`;
@@ -133,6 +133,35 @@ function saveOrder(button) {
     },
   });
 }
+function deleteCartProduct(button) {
+  const ajaxurl = $('#ajaxurl').val();
+  const objParams = {};
+  objParams.token = getParameterByName('token');
+  objParams.recordId = $(button).attr('recordId');
+  
+  $(button).prop('disable', true);
+  $('#displayLoading').removeClass('hide');
+  $.ajax({
+    data: objParams,
+    url: ajaxurl + '/deleteAjaxCart',
+    type: 'post',
+    success: function (response) {
+      if (response.status == 0) {
+        getProductsListByCategory();
+        getCartCount();
+      }
+      $('#displayLoading').addClass('hide');
+      $(button).prop('disable', false);
+    },
+    error: function () {
+      M.toast({
+        html: 'Unable to place order now. Please try agaon after sometime.',
+      });
+      $('#displayLoading').addClass('hide');
+      $(button).prop('disable', false);
+    },
+  });
+}
 $(document).ready(() => {
   getProductsListByCategory();
 });
@@ -141,7 +170,10 @@ $(document).on('click', '#placeOrder', function () {
   const button = $(this);
   saveOrder(button);
 });
-
+$(document).on('click', '#deleteFromCart', function () {
+  const button = $(this);
+  deleteCartProduct(button);
+});
 $(document).on('click', '.back-arrow', function () {
   const token = getParameterByName('token');
   window.location.href = `home.html?token=${token}`;

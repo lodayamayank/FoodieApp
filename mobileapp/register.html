@@ -70,22 +70,31 @@
                     <div class="row">
                       <div class="input-field col s12">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="name3" type="text">
-                        <label for="name3">Name</label>
+                        <input id="name" type="text">
+                        <label for="name">Name</label>
+                        <div class="errorTxt1">
+                          <div id="name_error" class="error hide">Enter your full name</div>
+                      </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-field col s12">
                         <i class="material-icons prefix">email</i>
-                        <input id="email3" type="email">
-                        <label for="email3">Email</label>
+                        <input id="email" type="email">
+                        <label for="email">Email</label>
+                        <div class="errorTxt1">
+                          <div id="email_error" class="error hide">Enter an email address</div>
+                      </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="input-field col s12">
                         <i class="material-icons prefix">lock_outline</i>
-                        <input id="password3" type="password">
-                        <label for="password3">Password</label>
+                        <input id="password" type="password">
+                        <label for="password">Password</label>
+                        <div class="errorTxt1">
+                          <div id="password_error" class="error hide">Enter Password</div>
+                      </div>
                       </div>
                     </div>
                     <div class="row">
@@ -93,33 +102,45 @@
                         <i class="material-icons prefix">phone</i>
                           <input id="mobile_no" type="text">
                           <label for="mobile_no">Mobile Number</label>
+                          <div class="errorTxt1">
+                            <div id="mobile_no_error" class="error hide">Enter Mobile Number</div>
+                        </div>
                       </div>
                   </div>
                     <div class="row">
                       <div class="input-field col s12">
                         <i class="material-icons prefix">domain</i>
-                        <input id="first_name01" type="text">
-                        <label for="first_name01">Flat Number</label>
+                        <input id="flat_no" type="number">
+                        <label for="flat_no">Flat Number</label>
+                        <div class="errorTxt1">
+                          <div id="flat_no_error" class="error hide">Enter Flat Number</div>
+                      </div>
                     </div>
                     </div>
 
                     <div class="row">
                       <div class="input-field col m12 s12">
                         <i class="material-icons prefix">location_city</i>
-                        <select>
+                        <select id="wing_name">
                             <option value="" disabled selected>Wing</option>
                             <option value="1">Sanctura</option>
                             <option value="2">Serena</option>
                             <option value="3">Sanino</option>
                             <option value="4">Salvino</option>
                         </select>
-                        <label>Select your wing</label>
+                        <label for="wing_name">Select your wing</label>
+                        <div class="errorTxt1">
+                          <div id="wing_name_error" class="error hide">Select your Wing</div>
+                      </div>
                     </div>
                       <div class="row">
                         <div class="input-field col s12">
-                          <button class="btn waves-effect waves-light right" type="submit" name="action">Submit
-                            <i class="material-icons right">send</i>
-                          </button>
+                          <a href="#!" class="btn waves-effect waves-light right" id="register">Register
+                            <i class="material-icons right">send</i></a>
+                          
+                          <div id="signup_error" class="invalid-feedback">
+                            
+                          </div>
                         </div>
                       </div>
                     </div>

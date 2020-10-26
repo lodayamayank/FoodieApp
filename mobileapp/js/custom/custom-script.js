@@ -63,9 +63,10 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 $(document).on('click','.redirecttomenu',function (){
-const menupage = $(this).attr('menupage');
-window.location.href = `${menupage}.html`;
-});
+	const pagename = $(this).attr('pagename');
+	const token = getParameterByName("token");
+	window.location.href = `${pagename}?token=${token}`;
+	});
 function openMap(){
     // If it's an iPhone..
     if( (navigator.platform.indexOf("iPhone") != -1) 

@@ -130,14 +130,56 @@
             <div class="col s12">
                 <div class="container">
                     <div class="section">
-                        <div class="card">
+                        <div class="row">
+                            <div class="col s6">
+                                <a class="waves-effect waves-dark btn-flat back-button" style="padding: 0px;"><i
+                                        class="material-icons left">arrow_back</i>Back to Orders</a>
+                            </div>
+                            <div class="col s6">
+                                <a class="waves-effect waves-light btn right">Update Order Status</a>
+                            </div>
+                        </div>
+                        <div class="card" style="margin: 0.5rem 0rem;">
                             <div class="card-content">
-                                <div class="row col s12">
-                                    
+                                <span class="card-title">Order Details</span>
+                                <div class="row">
+                                    <div class="col s4">
+                                        <label>Order #</label>
+                                    </div>
+                                    <div class="col s4">
+                                        <label>Place By</label>
+                                    </div>
+                                    <div class="col s4">
+                                        <label>Placed On</label>
+                                    </div>
+                                    <div class="col s4">
+                                        <span id="orderNumber">---</span>
+                                    </div>
+                                    <div class="col s4">
+                                        <span id="placedBy">---</span>
+                                    </div>
+                                    <div class="col s4">
+                                        <span id="placedOn">---</span>
+                                    </div>
                                 </div>
-                                <div class="row col s12">
-                                    <div id="grid"></div>
+                                <div class="row">
+                                    <div class="col s4">
+                                        <label>Total Amount</label>
+                                    </div>
+                                    <div class="col s8">
+                                        <label>Delivery Address</label>
+                                    </div>
+                                    <div class="col s4">
+                                        <span id="orderTotal">---</span>
+                                    </div>
+                                    <div class="col s8">
+                                        <span id="deliveryAddress">---</span>
+                                    </div>
                                 </div>
+
+                                <span class="card-title">Order Items (<span id="orderItemCount">0</span>)</span>
+
+                                <div id="grid"></div>
                             </div>
                         </div>
                     </div>
@@ -155,14 +197,14 @@
                     <h6>Add Order</h6>
                 </div>
                 <div class="input-field col s6">
-                    <input id="orderNumber" type="text">
-                    <label for="orderNumber">Order Number</label>
-                    <span id="orderNumber_error" class="helper-text red-text" style="display: none">Order Number is required</span>
-                </div>
-                <div class="input-field col s6">
                     <input id="name" type="text">
                     <label for="name">Name</label>
-                    <span id="name_error" class="helper-text red-text" style="display: none">Name is required
+                    <span id="name_error" class="helper-text red-text" style="display: none">Name is required</span>
+                </div>
+                <div class="input-field col s6">
+                    <input id="order" type="text">
+                    <label for="order">Display Order</label>
+                    <span id="order_error" class="helper-text red-text" style="display: none">Display Order is required
                     </span>
                 </div>
             </div>
@@ -182,7 +224,7 @@
     <script src="/js/scripts/extra-components-sweetalert.js" type="text/javascript"></script>
     <script src="/js/custom/kendo.all.min.js"></script>
 
-    <script src="/javascripts/orders.js"></script>
+    <script src="/javascripts/orderdetails.js"></script>
     <script src="/js/custom/jquery.sumoselect.min.js"></script>
 
 </body>

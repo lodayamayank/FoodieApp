@@ -128,18 +128,10 @@ module.exports = function (app, gConfig) {
                 json.name = resSchema.productName;
                 json.productName = resSchema.productName;
                 json.productDesc = resSchema.productDesc;
-                json.sectionId = resSchema.sectionId;
-                json.categoryId = resSchema.categoryId;
-                json.subCategoryId = resSchema.subCategoryId;
                 json.actualPrice = resSchema.actualPrice;
-                json.sellingPrice = resSchema.sellingPrice;
+                
                 json.availableQuantity = resSchema.availableQuantity;
-                json.discount = resSchema.discount;
-                json.colorId = resSchema.colorId;
-                json.manufacturerId = resSchema.manufacturerId;
-                json.brandId = resSchema.brandId;
-                json.warranty = resSchema.warranty;
-
+                
                 responseJSON.status = 0;
                 responseJSON.data = json;
                 return res.json(responseJSON);

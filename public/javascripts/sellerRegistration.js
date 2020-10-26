@@ -2,21 +2,13 @@ $(document).ready(function () {
     $(document).on("click", "#register", function (e) {
         var objParams = {};
 
-        objParams.firstName = $("#firstName").val();
+        objParams.firstName = $("#name").val();
         if (!objParams.firstName) {
-            $("#firstName_error").show().fadeIn("slow");;
-            $("#firstName").focus();
+            $("#name_error").show().fadeIn("slow");;
+            $("#name").focus();
             return false;
         }
-        $("#firstName_error").hide();
-
-        objParams.lastName = $("#lastName").val();
-        if (!objParams.lastName) {
-            $("#lastName_error").show().fadeIn("slow");;
-            $("#lastName").focus();
-            return false;
-        }
-        $("#lastName_error").hide();
+        $("#name_error").hide();
 
         objParams.email = $("#email").val();
         if (!objParams.email) {
@@ -30,18 +22,6 @@ $(document).ready(function () {
         } 
         $("#email_error").hide();
 
-        objParams.mobileNumber = $("#mobileNumber").val();
-        if (!objParams.mobileNumber) {
-            $("#mobileNumber_error").show().fadeIn("slow");;
-            $("#mobileNumber").focus();
-            return false;
-        } if (!isValidMobile(objParams.mobileNumber)) {
-            $("#email_error").show().fadeIn("slow");
-            $("#email").focus();
-            return false;
-        } 
-        $("#mobileNumber_error").hide();
-
         objParams.password = $("#password").val();
         if (!objParams.password) {
             $("#password_error").show().fadeIn("slow");
@@ -49,6 +29,30 @@ $(document).ready(function () {
             return false;
         }
         $("#password_error").hide();
+
+        objParams.mobileNumber = $("#mobile_no").val();
+        if (!objParams.mobileNumber) {
+            $("#mobile_no_error").show().fadeIn("slow");;
+            $("#mobile_no").focus();
+            return false;
+        } 
+        $("#mobile_no_error").hide();
+
+        objParams.flatNumber = $("#flat_no").val();
+        if (!objParams.password) {
+            $("#flat_no_error").show().fadeIn("slow");
+            $("#flat_no").focus();
+            return false;
+        }
+        $("#flat_no_error").hide();
+
+        objParams.wing = $("#wing_name :selected").val();
+        if (!objParams.category) {
+            $("#wing_name_error").show();
+            $("#wing_name").focus();
+            return false;
+        }
+        $("#wing_name_error").hide();
 
         $("#signup_error").hide();
 

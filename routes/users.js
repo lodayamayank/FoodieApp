@@ -389,10 +389,140 @@ if (req.body.token){
     return res.json(responseJSON);
   }
 }
+
+getLoggedInUserInfoApp = function (req, res) {
+  var responseJSON = {};
+  try {
+    let token; 
+if (req.body.token){
+      token = req.body.token;
+    } else {
+      token = req.cookies.token;
+    }
+    gConfig.verifyToken(token, function (responseToken) {
+      if (responseToken != false) {
+        var condition = {};
+        condition._id = responseToken.userId;
+        gConfig.UsermanagementSchema.findOne(condition, {firstName: 1, email: 1, profileImage: 1, mobileNumber: 1,wing:1,flatNumber:1,userId:1}).exec(function (errSchema, resSchema) {
+          if (errSchema) {
+            responseJSON.status = 1;
+            responseJSON.err = "Error while getting the data";
+            return res.json(responseJSON);
+          } else if (resSchema) {
+            var json = {}
+            json.name = `${resSchema.firstName}`;
+            json.email = resSchema.email;
+            json.profileImage = resSchema.profileImage;
+            json.mobileNumber = resSchema.mobileNumber;
+            json.wing = resSchema.wing;
+            json.flatNumber = resSchema.flatNumber;
+            json.userId = resSchema.userId;
+            responseJSON.status = 0;
+            responseJSON.data = json;
+            return res.json(responseJSON);
+          } else {
+            responseJSON.status = 1;
+            responseJSON.err = "No record found";
+            return res.json(responseJSON);
+          }
+        });
+      } else {
+        responseJSON.status = 1;
+        responseJSON.err = "";
+        return res.json(responseJSON);
+      }
+    });
+  } catch (err) {
+    responseJSON.status = 1;
+    responseJSON.data = [];
+    responseJSON.err = "Error while loading";
+    return res.json(responseJSON);
+  }
+}
+saveUpdateUser = function (req, res) {
+  var responseJSON = {};
+  try {
+    let token;
+    if (req.body.token) {
+      token = req.body.token;
+    } else {
+      token = req.cookies.token;
+    }
+    gConfig.verifyToken(token, function (responseToken) {
+      if (responseToken != false) {
+        var condition = {};
+        condition._id = req.body.userId;
+        gConfig.UsermanagementSchema.findOne(condition).exec(function (
+          errSchema,
+          resSchema
+        ) {
+          if (errSchema) {
+            responseJSON.status = 1;
+            responseJSON.err = "Error while getting the data";
+            return res.json(responseJSON);
+          } else if (resSchema) {
+            var resUpdateSchema = resSchema;
+            if (req.body.firstName != "" && req.body.firstName != undefined) {
+              resUpdateSchema.firstName = req.body.firstName;
+            }
+            if (req.body.email != "" && req.body.email != undefined) {
+              resUpdateSchema.email = req.body.email;
+            }
+            if (req.body.mobileNumber != "" && req.body.mobileNumber != undefined) {
+              resUpdateSchema.mobileNumber = req.body.mobileNumber;
+            }
+            if (
+              req.body.flatNumber != "" &&
+              req.body.flatNumber != undefined
+            ) {
+              resUpdateSchema.flatNumber = req.body.flatNumber;
+            }
+            if (
+              req.body.wing != "" &&
+              req.body.wing != undefined
+            ) {
+              resUpdateSchema.wing = req.body.wing;
+            }
+          
+            resUpdateSchema = gConfig.extend(resUpdateSchema, req.body);
+            
+            resUpdateSchema.markModified('productImage')
+            resUpdateSchema.save(function (errUpdate, resUpdate) {
+              if (errUpdate) {
+                responseJSON.status = 1;
+                responseJSON.err = "Err while updating";
+                return res.json(responseJSON);
+              } else {
+                responseJSON.status = 0;
+                responseJSON.err = "";
+                return res.json(responseJSON);
+              }
+            });
+          } else {
+            responseJSON.status = 1;
+            responseJSON.err = "No record found";
+            return res.json(responseJSON);
+          }
+        });
+      } else {
+        responseJSON.status = 1;
+        responseJSON.err = "";
+        return res.json(responseJSON);
+      }
+    });
+  } catch (err) {
+    responseJSON.status = 1;
+    responseJSON.err = "";
+    return res.json(responseJSON);
+  }
+};
 app.get('/users/:tokenKey', getUser);
 app.post('/getUsers', getUsersList);
 app.post('/getUserRecordById', getUserRecordById);
 app.post('/saveAjaxUsers', userSignUp);
 app.post('/updateAjaxUsers', updateUser);
 app.post('/deleteAjaxUsers', deleteUser);
+app.post('/getAjaxLoggedInUserInfoApp', getLoggedInUserInfoApp);
+app.post('/updateUserAjax', saveUpdateUser);
+
 }

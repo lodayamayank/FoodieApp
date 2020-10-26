@@ -354,13 +354,7 @@ module.exports = function (app, gConfig) {
                 return res.json(responseJSON);
               } else if (resSchema) {
                 var resUpdateSchema = resSchema;
-                if (
-                  req.body.isDelete != "" &&
-                  req.body.isDelete != undefined &&
-                  req.body.isDelete == "1"
-                ) {
-                  resUpdateSchema.isDelete = parseInt(req.body.isDelete);
-                }
+                  resUpdateSchema.isDelete = 1;
                 resUpdateSchema.save(function (errUpdate, resUpdate) {
                   if (errUpdate) {
                     responseJSON.status = 1;

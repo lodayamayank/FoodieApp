@@ -55,3 +55,6 @@ function loginSeller(objParams) {
         }  
     })
 }
+$(document).on('click', '#register', function () {
+    window.location.href = `register.html?`;
+  });

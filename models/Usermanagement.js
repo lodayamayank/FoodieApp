@@ -84,7 +84,7 @@ function UsermanagementSchema(connection, gConfig) {
             trim: true
         },
         profileImage: {
-            type: String,
+            type:  Schema.Types.Mixed,
             required: false
         },
         flatNumber: {

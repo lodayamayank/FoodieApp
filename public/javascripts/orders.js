@@ -53,13 +53,24 @@ function getOrdersList() {
             {
                 field: "index",
                 title: "Sr. No."
-            }, {
-                field: "name",
+            },
+            {
+                field: "orderNumber",
+                template: '<a href="\\#!" recordId="#: _id#" class="orderdetails">#:orderNumber#</a>',
+                title: "Order Number"
+            },
+             {
+                field: "createdBy",
                 title: "Name"
             }, {
-                field: "order",
-                title: "Display Order"
-            }, {
+                field: "totalAmount",
+                title: "Total Amount"
+            },
+            {
+                field: "itemsCount",
+                title: "Total Ordered Items"
+            },
+             {
                 field: "createdOn",
                 title: "Created On",
             }, {
@@ -167,3 +178,8 @@ $(document).on('click', '.editRecord', function () {
         }
     })
 });
+$(document).on('click', '.orderdetails', function () {
+    const recordId = $(this).attr('recordid');
+    const token = $('#token').val();
+    window.location.href = `/orderdetails/${token}/${recordId}`
+  });
