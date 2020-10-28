@@ -56,7 +56,7 @@ function getOrdersList() {
             },
             {
                 field: "orderNumber",
-                template: '<a href="\\#!" recordId="#: _id#" class="orderdetails">#:orderNumber#</a>',
+                template: '<a href="\\#!" recordid="#: _id#" class="orderdetail">#:orderNumber#</a>',
                 title: "Order Number"
             },
              {
@@ -178,7 +178,7 @@ $(document).on('click', '.editRecord', function () {
         }
     })
 });
-$(document).on('click', '.orderdetails', function () {
+$(document).on('click', '.orderdetail', function () {
     const recordId = $(this).attr('recordid');
     const token = $('#token').val();
     window.location.href = `/orderdetails/${token}/${recordId}`

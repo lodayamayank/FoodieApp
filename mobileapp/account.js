@@ -95,7 +95,7 @@ function getLoggedInUserInfoApp() {
     $("#wing_error").hide();
     
       objParams.userId = userId;
-    
+      objParams.token = getParameterByName('token');
       $('#submit').prop('disable', true);
       $('#displayLoading').removeClass('hide');
       $.ajax({

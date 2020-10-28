@@ -81,6 +81,7 @@ function signUpSeller(objParams) {
             if (response.status == 200){
                 $("#signup_error").show();
                 $("#signup_error").html("User created.");
+                window.location.href = `login.html?`;
             } else {
                 $("#signup_error").show();
                 $("#signup_error").html(response.error);

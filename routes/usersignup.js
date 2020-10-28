@@ -43,7 +43,7 @@ module.exports = function (app, gConfig) {
                     if (err) {
                         responseJson.data = '';
                         responseJson.status = 401;
-                        responseJson.error = 'Error while creating user.';
+                        responseJson.error = 'Error while creating user.1';
                         return res.json(responseJson);
                     } else {
                         resSaveCommon.password = hash;
@@ -65,7 +65,7 @@ module.exports = function (app, gConfig) {
             if (errSchema) {
                 responseJson.data = '';
                 responseJson.status = 401;
-                responseJson.error = 'Error while creating user.';
+                responseJson.error = 'Error while creating user.2';
                 return res.json(responseJson);
             } else if (resSchema) {
                 responseJson.data = '';
@@ -77,7 +77,7 @@ module.exports = function (app, gConfig) {
                     if (errUserSchema) {
                         responseJson.data = '';
                         responseJson.status = 401;
-                        responseJson.error = 'Error while creating user.';
+                        responseJson.error = 'Error while creating user.3';
                         return res.json(responseJson);
                     } else {
                         var resUpdateUser = resUserSchema;
