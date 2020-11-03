@@ -5,7 +5,7 @@ module.exports = function (app, gConfig) {
       if (responseToken != false) {
         gConfig.getUserMenu(responseToken, token, function (menu) {
           var resObj = {};
-          resObj.appName = "EShopper";
+          resObj.appName = "Foodie App";
           resObj.title = "Products";
           resObj.menu = menu;
           resObj.token = token;

@@ -9,7 +9,7 @@ module.exports = function (app, gConfig) {
       if (responseToken != false) {
         gConfig.getUserMenu(responseToken, token, function (menu) {
           var resObj = {};
-          resObj.appName = "EShopper";
+          resObj.appName = "Foodie App";
           resObj.title = "Users";
           resObj.menu = menu;
           resObj.token = token;
@@ -60,11 +60,14 @@ if (req.body.token){
                 json.index = index;
                 json._id = user._id;
                 json.firstName = user.firstName;
-                json.lastName = user.lastName;
                 json.email = user.email;
                 json.mobileNumber = user.mobileNumber;
+                json.wing = user.wing;
+                json.flatNumber = user.flatNumber;
                 json.createdOn = gConfig.moment(user.createdOn).format("DD/MM/YYYY");
                 json.updatedOn = gConfig.moment(user.updatedOn).format("DD/MM/YYYY");
+                
+            
                 arrRecords.push(json);
                 userCallback();
 

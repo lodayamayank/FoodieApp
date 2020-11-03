@@ -63,7 +63,7 @@ function getProductsListByCategory() {
                               <div class="col s4">
                                 <div class="row">
                                   <div class="center" style="margin-top: 4px;">
-                                    <span class="material-icons left decrease" action="decrease" productId="${data._id}">
+                                    <span class="material-icons left decrease" action="decrease" productId="${data._id}"> 
                                       remove_circle_outline
                                     </span>
                                     <span style="font-size:16px;font-weight:bold;">${data.quantity}</span>

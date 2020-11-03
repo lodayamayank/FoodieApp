@@ -10,7 +10,7 @@ module.exports = function (app, gConfig) {
         res.redirect('/dashboard/'+token);
       } else {
         var resObj = {};
-        resObj.appName = "Blue Butter Fly";
+        resObj.appName = "Foodie App";
         resObj.title = "Login";
         res.render('sellerLogin', resObj);
       }

@@ -6,7 +6,7 @@ module.exports = function (app, gConfig) {
       if (responseToken != false) {
         gConfig.getUserMenu(responseToken, token, function (menu) {
           var resObj = {};
-          resObj.appName = "Blue Butter Fly";
+          resObj.appName = "Foodie App";
           resObj.title = "Banner Image";
           resObj.menu = menu;
           resObj.token = token;
